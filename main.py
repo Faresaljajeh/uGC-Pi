@@ -37,13 +37,9 @@ print('Hello uGC-Pi')
 ######################################################################
 
 import time
-import smbus
 import sys
-import os, commands
-import subprocess
 
 from smbus import SMBus
-from sys import exit
 
 # for older PI's (version 1) use bus = SMBus(0) in statement below.
 bus = SMBus(1)
