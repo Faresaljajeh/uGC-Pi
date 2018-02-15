@@ -170,7 +170,7 @@ max_reading = 8388608.0
 
 lange = 0x06 # number of bytes to read in the block
 zeit = 5     # number of seconds to sleep between each measurement
-tiempo = 0.4 # number of seconds to sleep between each channel reading
+tiempo = 0.1 # number of seconds to sleep between each channel reading
 
 # tiempo - has to be more than 0.2 (seconds).
 
@@ -243,16 +243,50 @@ start = time.time();
 while ((time.time()-start) < (60)):
         #   Read Channel 0
 	Ch0Value = ch0_mult*getreading(address,channel0)
-	print ("Channel 0 at %s is %12.2f" % (time.ctime(), Ch0Value))
+	print ("Channel 0 at %s is %12.4f" % (time.ctime(), Ch0Value))
         # Sleep between each reading.
 	time.sleep(tiempo)
-        ############# End of Channel 0 block ###################
         #   Read Channel 1
 	Ch1Value = ch1_mult*getreading(address, channel1)
-	print ("Channel 1 at %s is %12.2f" % (time.ctime(), Ch1Value))
+	print ("Channel 1 at %s is %12.4f" % (time.ctime(), Ch1Value))
+	time.sleep(tiempo)
+        #   Read Channel 2
+	Ch2Value = ch0_mult*getreading(address,channel2)
+	print ("Channel 2 at %s is %12.4f" % (time.ctime(), Ch2Value))
         # Sleep between each reading.
 	time.sleep(tiempo)
-        ############# End of Channel 1 block ###################
+        #   Read Channel 1
+	Ch3Value = ch1_mult*getreading(address, channel3)
+	print ("Channel 3 at %s is %12.4f" % (time.ctime(), Ch3Value))
+	time.sleep(tiempo)
+    #   Read Channel 0
+	Ch4Value = ch0_mult*getreading(address,channel4)
+	print ("Channel 4 at %s is %12.4f" % (time.ctime(), Ch4Value))
+        # Sleep between each reading.
+	time.sleep(tiempo)
+        #   Read Channel 1
+	Ch5Value = ch1_mult*getreading(address, channel5)
+	print ("Channel 5 at %s is %12.4f" % (time.ctime(), Ch5Value))
+	time.sleep(tiempo)
+    #   Read Channel 0
+	Ch6Value = ch0_mult*getreading(address,channel6)
+	print ("Channel 6 at %s is %12.4f" % (time.ctime(), Ch6Value))
+        # Sleep between each reading.
+	time.sleep(tiempo)
+        #   Read Channel 1
+	Ch7Value = ch1_mult*getreading(address, channel7)
+	print ("Channel 7 at %s is %12.4f" % (time.ctime(), Ch7Value))
+	time.sleep(tiempo)
+    #   Read Channel 0
+	Ch8Value = ch0_mult*getreading(address,channel8)
+	print ("Channel 8 at %s is %12.4f" % (time.ctime(), Ch8Value))
+        # Sleep between each reading.
+	time.sleep(tiempo)
+        #   Read Channel 1
+	Ch9Value = ch1_mult*getreading(address, channel9)
+	print ("Channel 9 at %s is %12.4f" % (time.ctime(), Ch9Value))
+        # Sleep between each reading.
+	time.sleep(tiempo)
         # Write the values read should there be an interrupt. Since output is to stdout, it needs to be flushed
         # on exit or interrupt. Without that, readings could be lost.
 	sys.stdout.flush()
