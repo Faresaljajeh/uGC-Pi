@@ -170,7 +170,7 @@ max_reading = 8388608.0
 
 lange = 0x06 # number of bytes to read in the block
 zeit = 5     # number of seconds to sleep between each measurement
-tiempo = 0.6 # number of seconds to sleep between each channel reading
+tiempo = 0.2 # number of seconds to sleep between each channel reading
 
 # tiempo - has to be more than 0.2 (seconds).
 
@@ -193,7 +193,7 @@ def getreading(adc_address,adc_channel):
 	valor = ((((reading[0]&0x3F))<<16))+((reading[1]<<8))+(((reading[2]&0xE0)))
 # Debug statements provide additional prinout information for debuggin purposes. You can leave those commented out.
 # Debug
-#	print("Valor is 0x%x" % valor)
+	print("Valor is 0x%x" % valor)
 #----------- End of conversion of the Channel ----------
 	volts = valor*vref/max_reading
 
