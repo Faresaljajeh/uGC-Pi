@@ -170,7 +170,7 @@ max_reading = 8388608.0
 
 lange = 0x06 # number of bytes to read in the block
 zeit = 5     # number of seconds to sleep between each measurement
-tiempo = 0.3 # number of seconds to sleep between each channel reading
+tiempo = 0.6 # number of seconds to sleep between each channel reading
 
 # tiempo - has to be more than 0.2 (seconds).
 
