@@ -190,6 +190,7 @@ def getreading(adc_address,adc_channel):
 	time.sleep(tiempo)
 	reading  = bus.read_i2c_block_data(adc_address, adc_channel, lange)
 #----------- Start conversion for the Channel Data ----------
+	print(reading)
 	valor = ((((reading[0]&0x3F))<<16))+((reading[1]<<8))+(((reading[2]&0xE0)))
 # Debug statements provide additional prinout information for debuggin purposes. You can leave those commented out.
 # Debug
