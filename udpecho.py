@@ -9,7 +9,7 @@ import sys
 from socket import *
 
 ECHO_PORT = 50000 + 7
-BUFSIZE = 1024
+BUFSIZE = 10
 
 def main():
     if len(sys.argv) < 2:
