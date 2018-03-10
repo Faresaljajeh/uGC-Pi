@@ -1,6 +1,11 @@
-import os
+# Author: Ilja Novickij
 
-# Check where program is running
+###############################################################################
+# Imports
+import os
+from microgrid import Microgrid
+###############################################################################
+# OS checks and setup 
 try:
     machine_name = os.uname()[1]
 except AttributeError:
@@ -14,6 +19,14 @@ else:
         print('Not running on correct machine!')
         pi = False
         
+###############################################################################
+# Main Code
+
+m  = Microgrid()
+
+# Fetch Microgrid Status
+
+
 
     
     
