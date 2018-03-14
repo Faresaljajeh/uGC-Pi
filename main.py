@@ -9,14 +9,14 @@ from microgrid import Microgrid
 try:
     machine_name = os.uname()[1]
 except AttributeError:
-    print('Not running on correct machine!')
+    print('Not running on controller!')
     pi = False
 else:
     if machine_name == 'ugcpi':
         print('Running on correct machine!')
         pi = True
     else:
-        print('Not running on correct machine!')
+        print('Not running on controller!')
         pi = False
         
 ###############################################################################
@@ -24,11 +24,5 @@ else:
 
 m  = Microgrid()
 
-# Fetch Microgrid Status
-
-
-
-    
-    
-    
-    
+while 1:
+    m.e.send(m.e.status(),1)
