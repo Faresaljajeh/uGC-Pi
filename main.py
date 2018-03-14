@@ -25,4 +25,4 @@ else:
 m  = Microgrid()
 
 while 1:
-    m.e.send(m.e.status(),1)
+    m.e.send(m.e.status(),21)
