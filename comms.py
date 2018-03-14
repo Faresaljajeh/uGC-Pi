@@ -28,6 +28,7 @@ class Ethernet:
         # Receive latest microgrid data
         self.s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.s.bind((self.HOST_IP, self.PORT))
+        self.s.settimeout(1.0)
         data, address = self.s.recvfrom(self.BUF_SIZE)
         
         # Rearrange data from bytes into an array
