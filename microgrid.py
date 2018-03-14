@@ -13,5 +13,3 @@ class Microgrid:
         self.e = comms.Ethernet()
         
         
-        
-        
