@@ -16,18 +16,18 @@ class Ethernet:
         # Receive first message from microgrid to acquire message identification
         print('Waiting for connection from microgrid...')
         data, self.address = self.s.recvfrom(self.BUF_SIZE)
-        data_doubles = array.array('d', data)
-        self.MESSAGE_ID = data_doubles[0]
         print('Connected!')
+        self.message_header = data[0:6]
         
         # Close socket to prevent accumulation of data
         self.s.close()
         
     def status(self):
-
-        # Receive latest microgrid data
+        # Set up socket and bind socket to port and local host IP
         self.s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.s.bind((self.HOST_IP, self.PORT))
+        
+        # Receive latest microgrid data
         data, address = self.s.recvfrom(self.BUF_SIZE)
         
         # Rearrange data from bytes into an array
@@ -38,16 +38,18 @@ class Ethernet:
         return data_doubles[1:]
     
     
-    def send(self, commands, n):
-        # Rearrange data from array and include message identification
+    def send(self, commands):
+        # Set up socket and bind socket to port and local host IP
         self.s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.s.bind((self.HOST_IP, self.PORT))
-        data_to_send = array.array('d', [self.MESSAGE_ID])
-        for i in range(n):
-            data_to_send.append(commands[i])
+        
+        # Rearrange data from array and include message identification
+        n = len(commands)
+        message_length = bytes(array.array('h', [n*8]))
+        message = self.message_header + message_length + bytes(commands)
         
         # Send data
-        self.s.sendto(bytes(data_to_send), self.address)
+        self.s.sendto(message, self.address)
         
         # Close socket to prevent accumulation of data
         self.s.close()

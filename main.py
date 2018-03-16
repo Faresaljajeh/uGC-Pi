@@ -3,7 +3,7 @@
 ###############################################################################
 # Imports
 import os
-import time
+import array
 from microgrid import Microgrid
 ###############################################################################
 # OS checks and setup 
@@ -24,9 +24,7 @@ else:
 # Main Code
 
 m  = Microgrid()
-
-while 1:
-    start_time = time.time()
-    m.e.send(m.e.status(),1)
-    elapsed_time = time.time() - start_time;
-    print(elapsed_time)
+command = array.array('d',[])
+for i in range(3):
+    command.append(1.0)
+m.e.send(command)
