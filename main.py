@@ -13,7 +13,7 @@ from pyknow import *
 try:
     machine_name = os.uname()[1]
 except AttributeError:
-    print('Not running on controller!')
+    print('Hello!')
     pi = False
 else:
     if machine_name == 'ugcpi':
